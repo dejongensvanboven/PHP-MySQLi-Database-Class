@@ -2519,7 +2519,25 @@ class MysqliDb
         }
     }
 
-    public function getQuery() {
+    public function getQuery($tableName, $numRows = null, $columns = '*')
+    {
+        if (empty($columns)) {
+            $columns = '*';
+        }
+
+        $column = is_array($columns) ? implode(', ', $columns) : $columns;
+
+        if (strpos($tableName, '.') === false) {
+            $this->_tableName = self::$prefix . $tableName;
+        } else {
+            $this->_tableName = $tableName;
+        }
+
+        $this->_query = 'SELECT ' . implode(' ', $this->_queryOptions) . ' ' .
+            $column . " FROM " . $this->_tableName;
+
+        $this->_buildQuery($numRows);
+
         return $this->_query;
     }
 }
