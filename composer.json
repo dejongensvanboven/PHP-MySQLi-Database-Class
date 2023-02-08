@@ -1,5 +1,5 @@
 {
-    "name": "thingengineer/mysqli-database-class",
+    "name": "dejongensvanboven/mysqli-database-class",
     "description": "PHP MySQL Wrapper and object mapper which utilizes MySQLi and prepared statements",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -13,6 +13,12 @@
             "name": "Alexander V. Butenko",
             "email": "a.butenka@gmail.com",
             "homepage": "http://smarttechdo.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Niels van Oijen",
+            "email": "shaikunll@gmail.com",
+            "homepage": "http://shaikun.nl",
             "role": "Developer"
         }
     ],
