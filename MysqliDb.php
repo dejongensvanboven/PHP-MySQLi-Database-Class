@@ -559,6 +559,8 @@ class MysqliDb
         return str_replace($table[0], self::$prefix.$table[0], $query);
     }
 
+
+
     /**
      * Execute raw SQL query.
      *
@@ -570,7 +572,6 @@ class MysqliDb
      */
     public function rawQuery($query, $bindParams = null)
     {
-        $query = $this->rawAddPrefix($query);
         $params = array(''); // Create the empty 0 index
         $this->_query = $query;
         $stmt = $this->_prepareQuery();
@@ -594,6 +595,42 @@ class MysqliDb
 
         return $res;
     }
+
+//    /**
+//     * Execute raw SQL query.
+//     *
+//     * @param string $query      User-provided query to execute.
+//     * @param array  $bindParams Variables array to bind to the SQL statement.
+//     *
+//     * @return array Contains the returned rows from the query.
+//     * @throws Exception
+//     */
+//    public function rawQuery($query, $bindParams = null)
+//    {
+//        $query = $this->rawAddPrefix($query);
+//        $params = array(''); // Create the empty 0 index
+//        $this->_query = $query;
+//        $stmt = $this->_prepareQuery();
+//
+//        if (is_array($bindParams) === true) {
+//            foreach ($bindParams as $prop => $val) {
+//                $params[0] .= $this->_determineType($val);
+//                array_push($params, $bindParams[$prop]);
+//            }
+//
+//            call_user_func_array(array($stmt, 'bind_param'), $this->refValues($params));
+//        }
+//
+//        $stmt->execute();
+//        $this->count = $stmt->affected_rows;
+//        $this->_stmtError = $stmt->error;
+//        $this->_stmtErrno = $stmt->errno;
+//        $this->_lastQuery = $this->replacePlaceHolders($this->_query, $params);
+//        $res = $this->_dynamicBindResults($stmt);
+//        $this->reset();
+//
+//        return $res;
+//    }
 
     /**
      * Helper function to execute raw SQL query and return only 1 row of results.
