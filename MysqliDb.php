@@ -594,7 +594,7 @@ class MysqliDb
             $this->reset();
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
 
         return $res;
@@ -709,7 +709,7 @@ class MysqliDb
             $this->reset();
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
 
         return $res;
@@ -810,7 +810,7 @@ class MysqliDb
             $this->reset();
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
 
         return $res;
@@ -985,7 +985,7 @@ class MysqliDb
             $this->count      = $stmt->affected_rows;
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
 
         return $status;
@@ -1024,7 +1024,7 @@ class MysqliDb
             $this->reset();
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
 
         return ($stmt->affected_rows > -1);    //	-1 indicates that the query returned an error
@@ -1412,7 +1412,7 @@ class MysqliDb
             $this->reset();
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
         // Are there rows modified?
         if ($result) {
@@ -1450,7 +1450,7 @@ class MysqliDb
             $this->reset();
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
         // Are there rows modified?
         if ($result) {
@@ -1610,7 +1610,7 @@ class MysqliDb
             $this->count = $stmt->affected_rows;
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
 
         if ($stmt->affected_rows < 1) {
@@ -2076,7 +2076,7 @@ class MysqliDb
             }
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
 
         $error = $this->mysqli()->error;
@@ -2197,7 +2197,7 @@ class MysqliDb
             $this->reset();
         } catch (\Exception $e) {
             $this->reset();
-            throw $e;
+            throw new Exception($e->getMessage());
         }
         return $val;
     }
